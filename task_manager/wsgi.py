@@ -1,5 +1,4 @@
-"""
-WSGI config for task_manager project.
+"""WSGI config for task_manager project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
