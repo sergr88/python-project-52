@@ -92,11 +92,6 @@ DATABASES['default'].update(db_from_env)
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
 
-print(f'SECRET_KEY="{SECRET_KEY}"')
-print(f'DEBUG="{DEBUG}"')
-print(f'ALLOWED_HOSTS="{ALLOWED_HOSTS}"')
-print(f'DATABASES="{DATABASES}"')
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
