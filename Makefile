@@ -1,0 +1,37 @@
+PORT ?= 8000
+
+install:
+	uv sync
+
+collectstatic:
+	#uv run manage.py collectstatic --noinput
+ 
+migrate:
+	uv run manage.py migrate
+
+lint:
+	uv run ruff check
+
+lint-fix:
+	uv run ruff check --fix
+
+format:
+	uv run ruff format
+
+#db-up:
+#	docker compose -f __env__/dev/compose.yaml up --build -d
+#
+#db-down:
+#	docker compose -f __env__/dev/compose.yaml down
+#
+#db-logs:
+#	docker compose -f __env__/dev/compose.yaml logs -f
+#
+dev:
+	uv run manage.py runserver 127.0.0.1:$(PORT)
+
+build:
+	./build.sh
+
+render-start:
+	gunicorn -w 5 -b 0.0.0.0:$(PORT) task_manager.wsgi
