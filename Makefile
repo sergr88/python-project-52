@@ -31,7 +31,7 @@ dev:
 	uv run manage.py runserver 127.0.0.1:$(PORT)
 
 build:
-	./build.sh
+	make install && make collectstatic && make migrate
 
 render-start:
 	gunicorn -w 5 -b 0.0.0.0:$(PORT) task_manager.wsgi
