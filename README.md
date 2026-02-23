@@ -1,6 +1,12 @@
 # Проект: Менеджер задач (Python)
 
-## Тесты Hexlet и статус линтера:
+## Общая информация
+
+### Адрес развертывания:
+
+https://python-project-52-q7xz.onrender.com
+
+### Тесты Hexlet и статус линтера:
 
 [![Actions Status](https://github.com/sergr88/python-project-52/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/sergr88/python-project-52/actions)
 
