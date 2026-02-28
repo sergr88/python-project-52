@@ -27,6 +27,10 @@ format:
 #db-logs:
 #	docker compose -f __env__/dev/compose.yaml logs -f
 #
+
+shell:
+	uv run manage.py shell
+
 dev:
 	uv run manage.py runserver 127.0.0.1:$(PORT)
 

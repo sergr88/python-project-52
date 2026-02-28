@@ -55,6 +55,12 @@ python manage.py makemessages -l ru
 python manage.py compilemessages
 ```
 
+## Интерактивная Django-консоль
+
+```shell
+make shell
+```
+
 ## Запуск сервиса
 
 - Запуск локального веб-сервиса с автоматической перезагрузкой при изменении
