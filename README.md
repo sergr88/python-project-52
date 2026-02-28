@@ -41,6 +41,20 @@ make lint-fix
 make format
 ```
 
+## Подготовка переводов
+
+- Обновить файл переводов после изменения строк в шаблонах:
+```shell
+python manage.py makemessages -l ru
+```
+
+- Заполнить переводы в `locale/ru/LC_MESSAGES/django.po`
+
+- Скомпилировать переводы:
+```shell
+python manage.py compilemessages
+```
+
 ## Запуск сервиса
 
 - Запуск локального веб-сервиса с автоматической перезагрузкой при изменении
