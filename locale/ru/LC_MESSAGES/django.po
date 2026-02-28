@@ -18,30 +18,116 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: task_manager/templates/base.html:8 task_manager/templates/base.html:14
+#: task_manager/templates/base.html
 msgid "Task Manager"
 msgstr "Менеджер задач"
 
-#: task_manager/templates/base.html:22
+#: task_manager/templates/base.html
 msgid "Users"
 msgstr "Пользователи"
 
-#: task_manager/templates/base.html:25
+#: task_manager/templates/base.html task_manager/users/templates/users/login.html
 msgid "Log in"
 msgstr "Вход"
 
-#: task_manager/templates/base.html:28
+#: task_manager/users/templates/users/login.html
+msgctxt "action"
+msgid "Log in"
+msgstr "Войти"
+
+#: task_manager/templates/base.html
 msgid "Sign up"
 msgstr "Регистрация"
 
-#: task_manager/templates/index.html:6
+#: task_manager/templates/index.html
 msgid "Hello from Hexlet!"
 msgstr "Привет от Хекслета!"
 
-#: task_manager/templates/index.html:7
+#: task_manager/templates/index.html
 msgid "Practical programming courses"
 msgstr "Практические курсы по программированию"
 
-#: task_manager/templates/index.html:9
+#: task_manager/templates/index.html
 msgid "Learn more"
 msgstr "Узнать больше"
+
+#: task_manager/templates/users/create.html
+msgid "Registration"
+msgstr "Регистрация"
+
+#: task_manager/templates/users/create.html
+msgid "Register"
+msgstr "Зарегистрировать"
+
+#: task_manager/users/views.py
+msgid "User registered successfully"
+msgstr "Пользователь успешно зарегистрирован"
+
+#: task_manager/users/views.py
+msgid "You are logged in"
+msgstr "Вы залогинены"
+
+#: task_manager/users/templates/users/index.html
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: task_manager/users/templates/users/index.html
+msgid "Date joined"
+msgstr "Дата создания"
+
+#: task_manager/users/templates/users/index.html
+msgid "Create user"
+msgstr "Создать пользователя"
+
+#: task_manager/users/templates/users/index.html
+#: task_manager/users/templates/users/update.html
+msgid "Edit"
+msgstr "Изменить"
+
+#: task_manager/users/templates/users/index.html
+msgid "Delete"
+msgstr "Удалить"
+
+#: task_manager/users/templates/users/update.html
+msgid "Edit user"
+msgstr "Изменение пользователя"
+
+#: task_manager/users/templates/users/update.html
+msgid "Update"
+msgstr "Обновить"
+
+#: task_manager/users/templates/users/delete.html
+msgid "Delete user"
+msgstr "Удаление пользователя"
+
+#: task_manager/users/templates/users/delete.html
+msgid "Are you sure you want to delete"
+msgstr "Вы уверены, что хотите удалить"
+
+#: task_manager/users/templates/users/delete.html
+msgid "Yes, delete"
+msgstr "Да, удалить"
+
+#: task_manager/users/views.py
+msgid "User updated successfully"
+msgstr "Пользователь успешно изменён"
+
+#: task_manager/users/views.py
+msgid "User deleted successfully"
+msgstr "Пользователь успешно удалён"
+
+#: task_manager/templates/base.html
+msgid "Log out"
+msgstr "Выход"
+
+#: task_manager/users/views.py
+msgid "You are logged out"
+msgstr "Вы разлогинены"
+
+#: task_manager/users/views.py
+msgid "You are not logged in! Please log in."
+msgstr "Вы не авторизованы! Пожалуйста, выполните вход."
+
+#: task_manager/users/views.py
+msgid "You don't have permission to modify another user."
+msgstr "У вас нет прав для изменения другого пользователя."

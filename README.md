@@ -55,6 +55,12 @@ python manage.py makemessages -l ru
 python manage.py compilemessages
 ```
 
+## Запуск тестов
+
+```shell
+make test
+```
+
 ## Интерактивная Django-консоль
 
 ```shell

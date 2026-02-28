@@ -28,6 +28,9 @@ format:
 #	docker compose -f __env__/dev/compose.yaml logs -f
 #
 
+test:
+	uv run manage.py test
+
 shell:
 	uv run manage.py shell
 

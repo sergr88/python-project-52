@@ -1,0 +1,28 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 100,
+    "fields": {
+      "username": "johndoe",
+      "first_name": "John",
+      "last_name": "Doe",
+      "password": "pbkdf2_sha256$1200000$p2zCkFvzaXc0ZMlSWHnue1$DAY5gdLcC7UB4fsHjH0Z0cI1GXBrsRN6IWD5bM2bUO8=",
+      "is_active": true,
+      "is_staff": false,
+      "is_superuser": false
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 101,
+    "fields": {
+      "username": "janedoe",
+      "first_name": "Jane",
+      "last_name": "Doe",
+      "password": "pbkdf2_sha256$1200000$p2zCkFvzaXc0ZMlSWHnue1$DAY5gdLcC7UB4fsHjH0Z0cI1GXBrsRN6IWD5bM2bUO8=",
+      "is_active": true,
+      "is_staff": false,
+      "is_superuser": false
+    }
+  }
+]
