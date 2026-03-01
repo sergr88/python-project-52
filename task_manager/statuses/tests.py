@@ -27,15 +27,15 @@ class StatusReadTest(TestCase):
         """Test that the status list page displays all statuses."""
         self.client.login(username='johndoe', password='testpass123')
         response = self.client.get(self.url)
-        self.assertContains(response, 'New')
-        self.assertContains(response, 'In progress')
+        self.assertContains(response, 'Pending review')
+        self.assertContains(response, 'Archived')
 
     def test_status_list_context(self):
         """Test that the status list context contains all statuses."""
         self.client.login(username='johndoe', password='testpass123')
         response = self.client.get(self.url)
         statuses = response.context['statuses']
-        self.assertEqual(statuses.count(), 2)
+        self.assertEqual(statuses.count(), 6)
 
     def test_status_list_unavailable_for_unauthenticated_users(self):
         """Test that unauthenticated users are redirected to login."""
@@ -52,7 +52,7 @@ class StatusCreateTest(TestCase):
     def setUp(self):
         """Set up test data for status creation."""
         self.url = reverse('status_create')
-        self.valid_data = {'name': 'Done'}
+        self.valid_data = {'name': 'Blocked'}
 
     def test_create_page_loads(self):
         """Test that the create page returns 200 for authenticated user."""
@@ -65,27 +65,30 @@ class StatusCreateTest(TestCase):
         self.client.login(username='johndoe', password='testpass123')
         response = self.client.post(self.url, self.valid_data)
         self.assertRedirects(response, reverse('statuses'))
-        self.assertTrue(Status.objects.filter(name='Done').exists())
+        self.assertTrue(Status.objects.filter(name='Blocked').exists())
 
     def test_creation_with_missing_name(self):
         """Test that empty form submission does not create a status."""
         self.client.login(username='johndoe', password='testpass123')
         response = self.client.post(self.url, {})
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(Status.objects.count(), 2)
+        self.assertEqual(Status.objects.count(), 6)
 
     def test_creation_with_existing_name(self):
         """Test that duplicate name prevents creation."""
         self.client.login(username='johndoe', password='testpass123')
-        response = self.client.post(self.url, {'name': 'New'})
+        response = self.client.post(self.url, {'name': 'Pending review'})
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(Status.objects.filter(name='New').count(), 1)
+        self.assertEqual(
+            Status.objects.filter(name='Pending review').count(),
+            1,
+        )
 
     def test_create_by_unauthenticated_user(self):
         """Test that unauthenticated users are redirected to login."""
         response = self.client.post(self.url, self.valid_data)
         self.assertRedirects(response, reverse('login'))
-        self.assertFalse(Status.objects.filter(name='Done').exists())
+        self.assertFalse(Status.objects.filter(name='Blocked').exists())
 
 
 class StatusUpdateTest(TestCase):
@@ -95,7 +98,7 @@ class StatusUpdateTest(TestCase):
 
     def setUp(self):
         """Set up test data for status update."""
-        self.status = Status.objects.get(name='New')
+        self.status = Status.objects.get(name='Pending review')
         self.url = reverse('status_update', kwargs={'pk': self.status.pk})
         self.update_data = {'name': 'Updated'}
 
@@ -116,17 +119,17 @@ class StatusUpdateTest(TestCase):
     def test_update_with_existing_name(self):
         """Test that updating to an existing name fails."""
         self.client.login(username='johndoe', password='testpass123')
-        response = self.client.post(self.url, {'name': 'In progress'})
+        response = self.client.post(self.url, {'name': 'Archived'})
         self.assertEqual(response.status_code, 200)
         self.status.refresh_from_db()
-        self.assertEqual(self.status.name, 'New')
+        self.assertEqual(self.status.name, 'Pending review')
 
     def test_update_by_unauthenticated_user(self):
         """Test that unauthenticated users are redirected to login."""
         response = self.client.post(self.url, self.update_data)
         self.assertRedirects(response, reverse('login'))
         self.status.refresh_from_db()
-        self.assertEqual(self.status.name, 'New')
+        self.assertEqual(self.status.name, 'Pending review')
 
 
 class StatusDeleteTest(TestCase):
@@ -136,7 +139,7 @@ class StatusDeleteTest(TestCase):
 
     def setUp(self):
         """Set up test data for status deletion."""
-        self.status = Status.objects.get(name='New')
+        self.status = Status.objects.get(name='Pending review')
         self.url = reverse('status_delete', kwargs={'pk': self.status.pk})
 
     def test_delete_page_loads(self):
@@ -150,10 +153,10 @@ class StatusDeleteTest(TestCase):
         self.client.login(username='johndoe', password='testpass123')
         response = self.client.post(self.url)
         self.assertRedirects(response, reverse('statuses'))
-        self.assertFalse(Status.objects.filter(name='New').exists())
+        self.assertFalse(Status.objects.filter(name='Pending review').exists())
 
     def test_delete_by_unauthenticated_user(self):
         """Test that unauthenticated users cannot delete statuses."""
         response = self.client.post(self.url)
         self.assertRedirects(response, reverse('login'))
-        self.assertTrue(Status.objects.filter(name='New').exists())
+        self.assertTrue(Status.objects.filter(name='Pending review').exists())

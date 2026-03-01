@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-01 16:57+0000\n"
+"POT-Creation-Date: 2026-03-01 17:31+0000\n"
 "PO-Revision-Date: 2026-02-28 06:41+0000\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
@@ -26,7 +26,23 @@ msgstr "Английский"
 msgid "Russian"
 msgstr "Русский"
 
+#: task_manager/statuses/models.py:9
+msgid "New"
+msgstr "Новый"
+
 #: task_manager/statuses/models.py:10
+msgid "In progress"
+msgstr "В работе"
+
+#: task_manager/statuses/models.py:11
+msgid "Testing"
+msgstr "На тестировании"
+
+#: task_manager/statuses/models.py:12
+msgid "Done"
+msgstr "Завершён"
+
+#: task_manager/statuses/models.py:18
 #: task_manager/statuses/templates/statuses/index.html:13
 msgid "Name"
 msgstr "Имя"

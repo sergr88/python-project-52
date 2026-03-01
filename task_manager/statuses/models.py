@@ -1,7 +1,15 @@
 """Status model for task statuses."""
 
 from django.db import models
+from django.utils.translation import gettext, gettext_noop
 from django.utils.translation import gettext_lazy as _
+
+# Mark default status names for translation extraction.
+# These are stored in the database in English and translated at display time.
+gettext_noop('New')
+gettext_noop('In progress')
+gettext_noop('Testing')
+gettext_noop('Done')
 
 
 class Status(models.Model):
@@ -11,5 +19,5 @@ class Status(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        """Return the status name."""
-        return self.name
+        """Return the translated status name."""
+        return gettext(self.name)
