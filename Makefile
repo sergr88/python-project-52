@@ -6,8 +6,17 @@ install:
 collectstatic:
 	#uv run manage.py collectstatic --noinput
  
+makemigrations:
+	uv run manage.py makemigrations
+
 migrate:
 	uv run manage.py migrate
+
+makemessages:
+	uv run manage.py makemessages -l ru
+
+compilemessages:
+	uv run manage.py compilemessages
 
 lint:
 	uv run ruff check

@@ -41,24 +41,36 @@ make lint-fix
 make format
 ```
 
-## Подготовка переводов
-
-- Обновить файл переводов после изменения строк в шаблонах:
-```shell
-python manage.py makemessages -l ru
-```
-
-- Заполнить переводы в `locale/ru/LC_MESSAGES/django.po`
-
-- Скомпилировать переводы:
-```shell
-python manage.py compilemessages
-```
-
 ## Запуск тестов
 
 ```shell
 make test
+```
+
+## Локализация
+
+- Обновите файлы локализации после изменения строк в шаблонах:
+```shell
+make makemessages
+```
+
+- Заполните файлы локализации в `locale/*/LC_MESSAGES/django.po`
+
+- Скомпилируйте локализацию:
+```shell
+make compilemessages
+```
+
+## Миграции
+
+- Создайте файлы миграций после изменения моделей:
+```shell
+make makemigrations
+```
+
+- Примените миграции:
+```shell
+make migrate
 ```
 
 ## Интерактивная Django-консоль
