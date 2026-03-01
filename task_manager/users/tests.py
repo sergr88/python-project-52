@@ -5,6 +5,39 @@ from django.test import TestCase
 from django.urls import reverse
 
 
+class UserReadTest(TestCase):
+    """Tests for user list page (Read)."""
+
+    fixtures = ['users.json']
+
+    def setUp(self):
+        """Set up test data for user list."""
+        self.url = reverse('users')
+
+    def test_user_list_page_loads(self):
+        """Test that the user list page returns 200."""
+        response = self.client.get(self.url)
+        self.assertEqual(response.status_code, 200)
+
+    def test_user_list_contains_all_users(self):
+        """Test that the user list page displays all users."""
+        response = self.client.get(self.url)
+        self.assertContains(response, 'johndoe')
+        self.assertContains(response, 'janedoe')
+
+    def test_user_list_context(self):
+        """Test that the user list context contains all users."""
+        response = self.client.get(self.url)
+        users = response.context['users']
+        self.assertEqual(users.count(), 2)
+
+    def test_user_list_available_for_unauthenticated_users(self):
+        """Test that the user list is accessible without authentication."""
+        self.client.logout()
+        response = self.client.get(self.url)
+        self.assertEqual(response.status_code, 200)
+
+
 class UserCreateTest(TestCase):
     """Tests for user registration (Create)."""
 
