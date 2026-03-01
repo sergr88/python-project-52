@@ -131,3 +131,44 @@ msgstr "Вы не авторизованы! Пожалуйста, выполни
 #: task_manager/users/views.py
 msgid "You don't have permission to modify another user."
 msgstr "У вас нет прав для изменения другого пользователя."
+
+#: task_manager/templates/base.html
+#: task_manager/statuses/templates/statuses/index.html
+msgid "Statuses"
+msgstr "Статусы"
+
+#: task_manager/statuses/templates/statuses/index.html
+msgid "Name"
+msgstr "Имя"
+
+#: task_manager/statuses/templates/statuses/index.html
+msgid "Created at"
+msgstr "Дата создания"
+
+#: task_manager/statuses/templates/statuses/index.html
+msgid "Create status"
+msgstr "Создать статус"
+
+#: task_manager/statuses/templates/statuses/create.html
+msgid "Create"
+msgstr "Создать"
+
+#: task_manager/statuses/templates/statuses/update.html
+msgid "Edit status"
+msgstr "Изменение статуса"
+
+#: task_manager/statuses/templates/statuses/delete.html
+msgid "Delete status"
+msgstr "Удаление статуса"
+
+#: task_manager/statuses/views.py
+msgid "Status created successfully"
+msgstr "Статус успешно создан"
+
+#: task_manager/statuses/views.py
+msgid "Status updated successfully"
+msgstr "Статус успешно изменён"
+
+#: task_manager/statuses/views.py
+msgid "Status deleted successfully"
+msgstr "Статус успешно удалён"
