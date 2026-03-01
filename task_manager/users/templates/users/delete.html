@@ -7,7 +7,7 @@
 <div class="row justify-content-center">
   <div class="col-md-6">
     <h1 class="my-4">{% trans "Delete user" %}</h1>
-    <p>{% trans "Are you sure you want to delete" %} {{ object.get_full_name }}?</p>
+    <p>{% trans "Are you sure you want to delete" %} {{ object.username }}?</p>
     <form method="post">
       {% csrf_token %}
       <input type="submit" class="btn btn-danger" value="{% trans 'Yes, delete' %}">
