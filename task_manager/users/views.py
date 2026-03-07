@@ -5,6 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
+from django.db.models import ProtectedError
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
@@ -66,6 +67,17 @@ class UserDeleteView(UserPermissionMixin, SuccessMessageMixin, DeleteView):
     template_name = 'users/delete.html'
     success_url = reverse_lazy('users')
     success_message = _('User deleted successfully')
+
+    def post(self, request, *args, **kwargs):
+        """Handle ProtectedError when user is referenced by tasks."""
+        try:
+            return super().post(request, *args, **kwargs)
+        except ProtectedError:
+            messages.error(
+                request,
+                _('Cannot delete user because it is in use'),
+            )
+            return redirect('users')
 
 
 class UserLoginView(SuccessMessageMixin, LoginView):

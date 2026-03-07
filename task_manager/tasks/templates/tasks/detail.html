@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Task detail" %}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <h1 class="my-4">{% trans "Task detail" %}</h1>
+    <p><strong>{% trans "Name" %}:</strong> {{ object.name }}</p>
+    <p><strong>{% trans "Description" %}:</strong> {{ object.description }}</p>
+    <p><strong>{% trans "Status" %}:</strong> {{ object.status }}</p>
+    <p><strong>{% trans "Author" %}:</strong> {{ object.author.get_full_name|default:object.author.username }}</p>
+    <p><strong>{% trans "Executor" %}:</strong> {% if object.executor %}{{ object.executor.get_full_name|default:object.executor.username }}{% endif %}</p>
+    <p><strong>{% trans "Created at" %}:</strong> {{ object.created_at|date:"d.m.Y H:i" }}</p>
+  </div>
+</div>
+{% endblock %}
