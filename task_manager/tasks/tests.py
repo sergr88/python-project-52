@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.test import TestCase
 from django.urls import reverse
 
+from task_manager.labels.models import Label
+from task_manager.statuses.models import Status
 from task_manager.tasks.models import Task
 
 
@@ -170,3 +172,84 @@ class TaskDeleteTest(TestCase):
         response = self.client.post(self.url)
         self.assertRedirects(response, reverse('login'))
         self.assertTrue(Task.objects.filter(name='Test task').exists())
+
+
+class TaskFilterTest(TestCase):
+    """Tests for task filtering."""
+
+    fixtures = ['users.json', 'statuses.json', 'labels.json']
+
+    def setUp(self):
+        """Set up test data for filtering."""
+        self.url = reverse('tasks')
+        self.johndoe = User.objects.get(username='johndoe')
+        self.janedoe = User.objects.get(username='janedoe')
+        self.status1 = Status.objects.get(pk=100)
+        self.status2 = Status.objects.get(pk=101)
+        self.label_bug = Label.objects.get(pk=100)
+        self.label_feature = Label.objects.get(pk=101)
+
+        self.task1 = Task.objects.create(
+            name='Task one',
+            status=self.status1,
+            author=self.johndoe,
+            executor=self.johndoe,
+        )
+        self.task1.labels.add(self.label_bug)
+
+        self.task2 = Task.objects.create(
+            name='Task two',
+            status=self.status2,
+            author=self.janedoe,
+            executor=self.johndoe,
+        )
+        self.task2.labels.add(self.label_feature)
+
+        self.task3 = Task.objects.create(
+            name='Task three',
+            status=self.status1,
+            author=self.johndoe,
+            executor=self.janedoe,
+        )
+
+        self.client.login(username='johndoe', password='testpass123')
+
+    def test_filter_by_status(self):
+        """Test filtering tasks by status."""
+        response = self.client.get(self.url, {'status': self.status1.pk})
+        tasks = response.context['tasks']
+        self.assertEqual(tasks.count(), 2)
+        self.assertIn(self.task1, tasks)
+        self.assertIn(self.task3, tasks)
+        self.assertNotIn(self.task2, tasks)
+
+    def test_filter_by_executor(self):
+        """Test filtering tasks by executor."""
+        response = self.client.get(self.url, {'executor': self.johndoe.pk})
+        tasks = response.context['tasks']
+        self.assertEqual(tasks.count(), 2)
+        self.assertIn(self.task1, tasks)
+        self.assertIn(self.task2, tasks)
+        self.assertNotIn(self.task3, tasks)
+
+    def test_filter_by_label(self):
+        """Test filtering tasks by label."""
+        response = self.client.get(self.url, {'label': self.label_bug.pk})
+        tasks = response.context['tasks']
+        self.assertEqual(tasks.count(), 1)
+        self.assertIn(self.task1, tasks)
+
+    def test_filter_self_tasks(self):
+        """Test filtering only own tasks."""
+        response = self.client.get(self.url, {'self_tasks': 'on'})
+        tasks = response.context['tasks']
+        self.assertEqual(tasks.count(), 2)
+        self.assertIn(self.task1, tasks)
+        self.assertIn(self.task3, tasks)
+        self.assertNotIn(self.task2, tasks)
+
+    def test_no_filter(self):
+        """Test that without filters all tasks are shown."""
+        response = self.client.get(self.url)
+        tasks = response.context['tasks']
+        self.assertEqual(tasks.count(), 3)

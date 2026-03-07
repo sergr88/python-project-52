@@ -6,6 +6,26 @@
 {% block content %}
 <h1 class="my-4">{% trans "Tasks" %}</h1>
 <a href="{% url 'task_create' %}" class="btn btn-primary">{% trans "Create task" %}</a>
+<div class="card mt-3 mb-3">
+  <div class="card-body">
+    <form method="get">
+      {% for field in filter.form %}
+      {% if field.field.widget.input_type == 'checkbox' %}
+      <div class="form-check mb-2">
+        {{ field }}
+        <label class="form-check-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+      </div>
+      {% else %}
+      <div class="form-group mb-2">
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field }}
+      </div>
+      {% endif %}
+      {% endfor %}
+      <button type="submit" class="btn btn-primary">{% trans "Show" %}</button>
+    </form>
+  </div>
+</div>
 <table class="table table-striped mt-2">
   <thead>
     <tr>
@@ -22,16 +42,13 @@
     {% for task in tasks %}
     <tr>
       <td>{{ task.id }}</td>
-      <td>{{ task.name }}</td>
+      <td><a href="{% url 'task_detail' task.pk %}">{{ task.name }}</a></td>
       <td>{{ task.status }}</td>
       <td>{{ task.author.get_full_name|default:task.author.username }}</td>
       <td>{% if task.executor %}{{ task.executor.get_full_name|default:task.executor.username }}{% endif %}</td>
       <td>{{ task.created_at|date:"d.m.Y H:i" }}</td>
       <td>
-        <a href="{% url 'task_detail' task.pk %}">{% trans "Show" %}</a>
-        <br>
         <a href="{% url 'task_update' task.pk %}">{% trans "Edit" %}</a>
-        <br>
         <a href="{% url 'task_delete' task.pk %}">{% trans "Delete" %}</a>
       </td>
     </tr>

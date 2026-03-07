@@ -10,10 +10,11 @@ from django.views.generic import (
     CreateView,
     DeleteView,
     DetailView,
-    ListView,
     UpdateView,
 )
+from django_filters.views import FilterView
 
+from task_manager.tasks.filters import TaskFilter
 from task_manager.tasks.forms import TaskForm
 from task_manager.tasks.models import Task
 
@@ -27,12 +28,13 @@ class TaskLoginRequiredMixin(LoginRequiredMixin):
         return redirect('login')
 
 
-class TaskListView(TaskLoginRequiredMixin, ListView):
-    """View for listing all tasks."""
+class TaskListView(TaskLoginRequiredMixin, FilterView):
+    """View for listing all tasks with filtering."""
 
     model = Task
     template_name = 'tasks/index.html'
     context_object_name = 'tasks'
+    filterset_class = TaskFilter
 
 
 class TaskCreateView(TaskLoginRequiredMixin, SuccessMessageMixin, CreateView):
