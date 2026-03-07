@@ -13,6 +13,14 @@
     <p><strong>{% trans "Author" %}:</strong> {{ object.author.get_full_name|default:object.author.username }}</p>
     <p><strong>{% trans "Executor" %}:</strong> {% if object.executor %}{{ object.executor.get_full_name|default:object.executor.username }}{% endif %}</p>
     <p><strong>{% trans "Created at" %}:</strong> {{ object.created_at|date:"d.m.Y H:i" }}</p>
+    <p><strong>{% trans "Labels" %}:</strong></p>
+    {% if object.labels.all %}
+    <ul>
+      {% for label in object.labels.all %}
+      <li>{{ label.name }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
   </div>
 </div>
 {% endblock %}

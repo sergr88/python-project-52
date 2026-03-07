@@ -12,4 +12,4 @@ class TaskForm(ModelForm):
         """Meta class for TaskForm."""
 
         model = Task
-        fields = ('name', 'description', 'status', 'executor')
+        fields = ('name', 'description', 'status', 'executor', 'labels')

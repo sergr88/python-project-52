@@ -1,0 +1,18 @@
+[
+  {
+    "model": "labels.label",
+    "pk": 100,
+    "fields": {
+      "name": "Bug",
+      "created_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "labels.label",
+    "pk": 101,
+    "fields": {
+      "name": "Feature",
+      "created_at": "2026-01-01T00:00:00Z"
+    }
+  }
+]
