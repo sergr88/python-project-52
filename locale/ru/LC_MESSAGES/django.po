@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-07 16:11+0000\n"
+"POT-Creation-Date: 2026-03-10 02:36+0000\n"
 "PO-Revision-Date: 2026-02-28 06:41+0000\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
@@ -63,7 +63,7 @@ msgstr "Да, удалить"
 #: task_manager/labels/templates/labels/index.html:7
 #: task_manager/tasks/models.py:31
 #: task_manager/tasks/templates/tasks/detail.html:16
-#: task_manager/templates/base.html:32
+#: task_manager/templates/base.html:29
 msgid "Labels"
 msgstr "Метки"
 
@@ -121,11 +121,11 @@ msgstr "Метка успешно удалена"
 msgid "Cannot delete label because it is in use"
 msgstr "Невозможно удалить метку"
 
-#: task_manager/settings.py:118
+#: task_manager/settings.py:126
 msgid "English"
 msgstr "Английский"
 
-#: task_manager/settings.py:119
+#: task_manager/settings.py:127
 msgid "Russian"
 msgstr "Русский"
 
@@ -144,6 +144,10 @@ msgstr "На тестировании"
 #: task_manager/statuses/models.py:12
 msgid "Done"
 msgstr "Завершён"
+
+#: task_manager/statuses/models.py:22
+msgid "Task status"
+msgstr "Статус задачи"
 
 #: task_manager/statuses/templates/statuses/create.html:5
 #: task_manager/statuses/templates/statuses/create.html:10
@@ -232,7 +236,7 @@ msgstr "Просмотр задачи"
 
 #: task_manager/tasks/templates/tasks/index.html:4
 #: task_manager/tasks/templates/tasks/index.html:7
-#: task_manager/templates/base.html:29
+#: task_manager/templates/base.html:32
 msgid "Tasks"
 msgstr "Задачи"
 

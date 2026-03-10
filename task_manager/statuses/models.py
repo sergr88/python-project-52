@@ -18,6 +18,11 @@ class Status(models.Model):
     name = models.CharField(max_length=150, unique=True, verbose_name=_('Name'))
     created_at = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        """Meta options for Status model."""
+
+        verbose_name = _('Task status')
+
     def __str__(self):
         """Return the translated status name."""
         return gettext(self.name)
