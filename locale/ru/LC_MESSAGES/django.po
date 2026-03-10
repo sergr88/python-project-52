@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-10 02:36+0000\n"
+"POT-Creation-Date: 2026-03-10 02:48+0000\n"
 "PO-Revision-Date: 2026-02-28 06:41+0000\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
@@ -78,14 +78,14 @@ msgstr "Дата создания"
 #: task_manager/statuses/templates/statuses/index.html:25
 #: task_manager/tasks/templates/tasks/index.html:51
 #: task_manager/tasks/templates/tasks/update.html:14
-#: task_manager/users/templates/users/index.html:25
+#: task_manager/users/templates/users/index.html:27
 msgid "Edit"
 msgstr "Изменить"
 
 #: task_manager/labels/templates/labels/index.html:27
 #: task_manager/statuses/templates/statuses/index.html:27
 #: task_manager/tasks/templates/tasks/index.html:52
-#: task_manager/users/templates/users/index.html:27
+#: task_manager/users/templates/users/index.html:29
 msgid "Delete"
 msgstr "Удалить"
 
@@ -145,7 +145,7 @@ msgstr "На тестировании"
 msgid "Done"
 msgstr "Завершён"
 
-#: task_manager/statuses/models.py:22
+#: task_manager/statuses/models.py:24
 msgid "Task status"
 msgstr "Статус задачи"
 
@@ -324,6 +324,10 @@ msgid "Username"
 msgstr "Имя пользователя"
 
 #: task_manager/users/templates/users/index.html:14
+msgid "Full name"
+msgstr "Полное имя"
+
+#: task_manager/users/templates/users/index.html:15
 msgid "Date joined"
 msgstr "Дата создания"
 

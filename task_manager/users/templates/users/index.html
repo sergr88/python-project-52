@@ -11,6 +11,7 @@
     <tr>
       <th>ID</th>
       <th>{% trans "Username" %}</th>
+      <th>{% trans "Full name" %}</th>
       <th>{% trans "Date joined" %}</th>
       <th></th>
     </tr>
@@ -20,6 +21,7 @@
     <tr>
       <td>{{ user.id }}</td>
       <td>{{ user.username }}</td>
+      <td>{{ user.get_full_name }}</td>
       <td>{{ user.date_joined|date:"d.m.Y H:i" }}</td>
       <td>
         <a href="{% url 'user_update' user.pk %}">{% trans "Edit" %}</a>
