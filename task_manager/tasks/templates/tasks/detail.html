@@ -4,16 +4,31 @@
 {% block title %}{% trans "Task detail" %}{% endblock %}
 
 {% block content %}
-<div class="row justify-content-center">
-  <div class="col-md-6">
-    <h1 class="my-4">{% trans "Task detail" %}</h1>
-    <p><strong>{% trans "Name" %}:</strong> {{ object.name }}</p>
-    <p><strong>{% trans "Description" %}:</strong> {{ object.description }}</p>
-    <p><strong>{% trans "Status" %}:</strong> {{ object.status }}</p>
-    <p><strong>{% trans "Author" %}:</strong> {{ object.author.get_full_name|default:object.author.username }}</p>
-    <p><strong>{% trans "Executor" %}:</strong> {% if object.executor %}{{ object.executor.get_full_name|default:object.executor.username }}{% endif %}</p>
-    <p><strong>{% trans "Created at" %}:</strong> {{ object.created_at|date:"d.m.Y H:i" }}</p>
-    <p><strong>{% trans "Labels" %}:</strong></p>
+<h1 class="my-4">{% trans "Task detail" %}</h1>
+<div class="card">
+  <div class="card-header bg-secondary text-white">
+    <h3 class="mb-0">{{ object.name }}</h3>
+  </div>
+  <div class="card-body">
+    <p>{{ object.description }}</p>
+    <hr>
+    <div class="row mb-2">
+      <div class="col-sm-3"><strong>{% trans "Author" %}</strong></div>
+      <div class="col-sm-9">{{ object.author.get_full_name|default:object.author.username }}</div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-sm-3"><strong>{% trans "Executor" %}</strong></div>
+      <div class="col-sm-9">{% if object.executor %}{{ object.executor.get_full_name|default:object.executor.username }}{% endif %}</div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-sm-3"><strong>{% trans "Status" %}</strong></div>
+      <div class="col-sm-9">{{ object.status }}</div>
+    </div>
+    <div class="row mb-2">
+      <div class="col-sm-3"><strong>{% trans "Created at" %}</strong></div>
+      <div class="col-sm-9">{{ object.created_at|date:"d.m.Y H:i" }}</div>
+    </div>
+    <p class="mb-1"><strong>{% trans "Labels" %}:</strong></p>
     {% if object.labels.all %}
     <ul>
       {% for label in object.labels.all %}
@@ -21,6 +36,9 @@
       {% endfor %}
     </ul>
     {% endif %}
+    <a href="{% url 'task_update' object.pk %}">{% trans "Edit" %}</a>
+    <br>
+    <a href="{% url 'task_delete' object.pk %}">{% trans "Delete" %}</a>
   </div>
 </div>
 {% endblock %}
