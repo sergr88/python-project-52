@@ -10,6 +10,10 @@ https://python-project-52-q7xz.onrender.com
 
 [![Actions Status](https://github.com/sergr88/python-project-52/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/sergr88/python-project-52/actions)
 
+### Качество кода:
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=sergr88_python-project-52&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=sergr88_python-project-52)
+
 ## Требования
 
 - uv 0.9+
