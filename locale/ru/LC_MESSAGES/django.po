@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-10 02:48+0000\n"
+"POT-Creation-Date: 2026-03-10 02:56+0000\n"
 "PO-Revision-Date: 2026-02-28 06:41+0000\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
@@ -78,14 +78,14 @@ msgstr "Дата создания"
 #: task_manager/statuses/templates/statuses/index.html:25
 #: task_manager/tasks/templates/tasks/index.html:51
 #: task_manager/tasks/templates/tasks/update.html:14
-#: task_manager/users/templates/users/index.html:27
+#: task_manager/users/templates/users/index.html:26
 msgid "Edit"
 msgstr "Изменить"
 
 #: task_manager/labels/templates/labels/index.html:27
 #: task_manager/statuses/templates/statuses/index.html:27
 #: task_manager/tasks/templates/tasks/index.html:52
-#: task_manager/users/templates/users/index.html:29
+#: task_manager/users/templates/users/index.html:28
 msgid "Delete"
 msgstr "Удалить"
 
@@ -315,19 +315,15 @@ msgstr "Зарегистрировать"
 msgid "Delete user"
 msgstr "Удаление пользователя"
 
-#: task_manager/users/templates/users/index.html:8
-msgid "Create user"
-msgstr "Создать пользователя"
-
-#: task_manager/users/templates/users/index.html:13
+#: task_manager/users/templates/users/index.html:12
 msgid "Username"
 msgstr "Имя пользователя"
 
-#: task_manager/users/templates/users/index.html:14
+#: task_manager/users/templates/users/index.html:13
 msgid "Full name"
 msgstr "Полное имя"
 
-#: task_manager/users/templates/users/index.html:15
+#: task_manager/users/templates/users/index.html:14
 msgid "Date joined"
 msgstr "Дата создания"
 
@@ -368,3 +364,6 @@ msgstr "Вы залогинены"
 #: task_manager/users/views.py:98
 msgid "You are logged out"
 msgstr "Вы разлогинены"
+
+#~ msgid "Create user"
+#~ msgstr "Создать пользователя"
