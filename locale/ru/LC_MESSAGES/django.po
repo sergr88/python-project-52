@@ -178,7 +178,7 @@ msgstr "Статус успешно создан"
 
 #: task_manager/statuses/views.py:50
 msgid "Status updated successfully"
-msgstr "Статус успешно изменён"
+msgstr "Статус успешно изменен"
 
 #: task_manager/statuses/views.py:59
 msgid "Status deleted successfully"
@@ -347,7 +347,7 @@ msgstr "Пользователь успешно зарегистрирован"
 
 #: task_manager/users/views.py:60
 msgid "User updated successfully"
-msgstr "Пользователь успешно изменён"
+msgstr "Пользователь успешно изменен"
 
 #: task_manager/users/views.py:69
 msgid "User deleted successfully"
