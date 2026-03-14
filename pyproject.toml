@@ -17,8 +17,16 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+    "coverage>=7.13.4",
     "ruff>=0.14.11",
 ]
+
+[tool.coverage.run]
+source = ["task_manager"]
+omit = ["*/migrations/*", "*/tests.py"]
+
+[tool.coverage.xml]
+output = "coverage.xml"
 
 [tool.ruff]
 output-format = "concise"

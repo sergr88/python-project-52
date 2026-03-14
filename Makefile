@@ -40,6 +40,10 @@ format:
 test:
 	uv run manage.py test
 
+test-coverage:
+	uv run coverage run manage.py test
+	uv run coverage xml
+
 shell:
 	uv run manage.py shell
 
