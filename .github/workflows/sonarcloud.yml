@@ -25,6 +25,8 @@ jobs:
         run: uv sync
       - name: Run tests with coverage
         run: uv run coverage run manage.py test
+        env:
+          SECRET_KEY: "test-secret-key"
       - name: Generate coverage report
         run: uv run coverage xml
       - name: SonarCloud Scan
