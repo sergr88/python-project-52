@@ -182,7 +182,7 @@ msgstr "Статус успешно изменен"
 
 #: task_manager/statuses/views.py:59
 msgid "Status deleted successfully"
-msgstr "Статус успешно удалён"
+msgstr "Статус успешно удален"
 
 #: task_manager/statuses/views.py:68
 msgid "Cannot delete status because it is in use"
@@ -351,7 +351,7 @@ msgstr "Пользователь успешно изменен"
 
 #: task_manager/users/views.py:69
 msgid "User deleted successfully"
-msgstr "Пользователь успешно удалён"
+msgstr "Пользователь успешно удален"
 
 #: task_manager/users/views.py:78
 msgid "Cannot delete user because it is in use"
