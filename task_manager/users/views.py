@@ -11,7 +11,10 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
-from task_manager.users.forms import CustomUserCreationForm, CustomUserUpdateForm
+from task_manager.users.forms import (
+    CustomUserCreationForm,
+    CustomUserUpdateForm,
+)
 
 
 class UserPermissionMixin(LoginRequiredMixin, UserPassesTestMixin):
@@ -24,7 +27,9 @@ class UserPermissionMixin(LoginRequiredMixin, UserPassesTestMixin):
     def handle_no_permission(self):
         """Redirect with an error message on permission failure."""
         if not self.request.user.is_authenticated:
-            messages.error(self.request, _('You are not logged in! Please log in.'))
+            messages.error(
+                self.request, _('You are not logged in! Please log in.')
+            )
             return redirect('login')
         messages.error(
             self.request,

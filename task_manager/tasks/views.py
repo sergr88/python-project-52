@@ -83,6 +83,8 @@ class TaskDeleteView(TaskLoginRequiredMixin, SuccessMessageMixin, DeleteView):
             return self.handle_no_permission()
         task = self.get_object()
         if task.author != request.user:
-            messages.error(request, _('A task can only be deleted by its author.'))
+            messages.error(
+                request, _('A task can only be deleted by its author.')
+            )
             return redirect('tasks')
         return super().dispatch(request, *args, **kwargs)

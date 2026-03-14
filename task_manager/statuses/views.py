@@ -30,7 +30,9 @@ class StatusListView(StatusLoginRequiredMixin, ListView):
     context_object_name = 'statuses'
 
 
-class StatusCreateView(StatusLoginRequiredMixin, SuccessMessageMixin, CreateView):
+class StatusCreateView(
+    StatusLoginRequiredMixin, SuccessMessageMixin, CreateView
+):
     """View for creating a status."""
 
     model = Status
@@ -40,7 +42,9 @@ class StatusCreateView(StatusLoginRequiredMixin, SuccessMessageMixin, CreateView
     success_message = _('Status created successfully')
 
 
-class StatusUpdateView(StatusLoginRequiredMixin, SuccessMessageMixin, UpdateView):
+class StatusUpdateView(
+    StatusLoginRequiredMixin, SuccessMessageMixin, UpdateView
+):
     """View for updating a status."""
 
     model = Status
@@ -50,7 +54,9 @@ class StatusUpdateView(StatusLoginRequiredMixin, SuccessMessageMixin, UpdateView
     success_message = _('Status updated successfully')
 
 
-class StatusDeleteView(StatusLoginRequiredMixin, SuccessMessageMixin, DeleteView):
+class StatusDeleteView(
+    StatusLoginRequiredMixin, SuccessMessageMixin, DeleteView
+):
     """View for deleting a status."""
 
     model = Status

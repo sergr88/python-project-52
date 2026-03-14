@@ -32,7 +32,9 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = [
-    host.strip() for host in os.getenv('ALLOWED_HOSTS', '').split(',') if host.strip()
+    host.strip()
+    for host in os.getenv('ALLOWED_HOSTS', '').split(',')
+    if host.strip()
 ] or (['*'] if DEBUG else [])
 
 ROLLBAR = {
@@ -111,7 +113,7 @@ DATABASES['default'].update(db_from_env)
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',  # noqa: E501
         'OPTIONS': {'min_length': 3},
     }
 ]

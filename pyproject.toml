@@ -22,7 +22,7 @@ dev = [
 
 [tool.ruff]
 output-format = "concise"
-line-length = 99
+line-length = 80
 extend-exclude = ["__init__.py", "manage.py", "*/migrations/"]
 
 [tool.ruff.lint]
