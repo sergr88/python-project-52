@@ -33,7 +33,7 @@ DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = [
     host.strip() for host in os.getenv('ALLOWED_HOSTS', '').split(',') if host.strip()
-]
+] or (['*'] if DEBUG else [])
 
 ROLLBAR = {
     'access_token': os.getenv('ROLLBAR_ACCESS_TOKEN'),
