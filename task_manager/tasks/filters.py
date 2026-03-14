@@ -13,6 +13,13 @@ from task_manager.tasks.models import Task
 class TaskFilter(django_filters.FilterSet):
     """FilterSet for filtering tasks."""
 
+    def __init__(self, *args, **kwargs):
+        """Set executor filter to display full names."""
+        super().__init__(*args, **kwargs)
+        self.filters['executor'].field.label_from_instance = lambda user: (
+            user.get_full_name() or user.username
+        )
+
     status = django_filters.ModelChoiceFilter(
         queryset=Status.objects.all(),
         label=_('Status'),
