@@ -137,6 +137,16 @@ USE_TZ = True
 
 LOCALE_PATHS = [BASE_DIR / 'locale']
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'loggers': {
+        'rollbar': {
+            'level': 'ERROR',
+        },
+    },
+}
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
